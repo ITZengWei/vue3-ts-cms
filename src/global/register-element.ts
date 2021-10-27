@@ -1,12 +1,80 @@
 import { App } from 'vue'
 /** 引入 element 组件 */
-import { ElButton } from 'element-plus'
+import {
+  ElAside,
+  ElAvatar,
+  ElButton,
+  ElCheckbox,
+  ElContainer,
+  ElDatePicker,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElForm,
+  ElFormItem,
+  ElHeader,
+  ElInput,
+  ElLink,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElOption,
+  ElRadio,
+  ElRow,
+  ElCol,
+  ElSelect,
+  // ElSubmenu,
+  ElTabPane,
+  ElTabs,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElTable,
+  ElTableColumn,
+  ElPagination,
+  ElImage,
+  ElDialog,
+  ElTree,
+} from 'element-plus'
 import 'element-plus/dist/index.css'
 
 export default {
   install(app: App): void {
-    // app.use(ElButton)
-    app.component(ElButton.name, ElButton)
+    app.use(ElAside)
+    app.use(ElAvatar)
+    app.use(ElButton)
+    app.use(ElCheckbox)
+    app.use(ElContainer)
+    app.use(ElDatePicker)
+    app.use(ElDropdown)
+    app.use(ElDropdownItem)
+    app.use(ElDropdownMenu)
+    app.use(ElForm)
+    app.use(ElFormItem)
+    app.use(ElHeader)
+    app.use(ElInput)
+    app.use(ElLink)
+    app.use(ElMain)
+    app.use(ElMenu)
+    app.use(ElMenuItem)
+    app.use(ElMenuItemGroup)
+    app.use(ElOption)
+    app.use(ElRadio)
+    app.use(ElRow)
+    app.use(ElCol)
+    app.use(ElSelect)
+    // app.use(ElSubmenu)
+    app.use(ElTabPane)
+    app.use(ElTabs)
+    app.use(ElBreadcrumb)
+    app.use(ElBreadcrumbItem)
+    app.use(ElTable)
+    app.use(ElTableColumn)
+    app.use(ElPagination)
+    app.use(ElImage)
+    app.use(ElDialog)
+    app.use(ElTree)
+    // app.component(ElButton.name, ElButton)
   },
 }
 
