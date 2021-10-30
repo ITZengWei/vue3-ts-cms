@@ -1,17 +1,20 @@
 import TryRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
+/** localStorage 的封装 */
+import LocalCache from '@/utils/cache'
 
 const tryRequest = new TryRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor(config) {
-      console.log('实例请求拦截器')
+      const token = LocalCache.getCache('token')
+      if (token) {
+        ;(config.headers as any).Authorization = `Bearer ${token}`
+      }
       return config
     },
     responseInterceptor(res) {
-      console.log('实例响应拦截器')
-
       return res.data
     },
   },

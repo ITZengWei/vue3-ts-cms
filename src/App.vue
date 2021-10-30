@@ -2,6 +2,18 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { useStore } from 'vuex'
+
+export default {
+  setup() {
+    const store = useStore()
+    /** 将本地数据设置到 vuex 中 */
+    store.dispatch('login/loadLocalLogin')
+  },
+}
+</script>
+
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

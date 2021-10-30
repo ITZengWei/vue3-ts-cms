@@ -16,7 +16,8 @@ import { ElForm } from 'element-plus'
 import { defineComponent, ref, reactive } from 'vue'
 import { rules } from '../config/account-config'
 import localCache from '@/utils/cache'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
+import { useStore } from '@/store/index'
 
 export default defineComponent({
   setup() {

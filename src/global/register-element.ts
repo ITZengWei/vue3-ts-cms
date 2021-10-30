@@ -24,7 +24,7 @@ import {
   ElRow,
   ElCol,
   ElSelect,
-  // ElSubmenu,
+  ElSubMenu,
   ElTabPane,
   ElTabs,
   ElBreadcrumb,
@@ -63,7 +63,7 @@ export default {
     app.use(ElRow)
     app.use(ElCol)
     app.use(ElSelect)
-    // app.use(ElSubmenu)
+    app.use(ElSubMenu)
     app.use(ElTabPane)
     app.use(ElTabs)
     app.use(ElBreadcrumb)
