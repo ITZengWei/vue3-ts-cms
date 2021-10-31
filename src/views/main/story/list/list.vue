@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'list',
   setup() {
     return {}
-  }
+  },
 })
 </script>
 

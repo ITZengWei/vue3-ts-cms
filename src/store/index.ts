@@ -20,4 +20,9 @@ export function useStore(): Store<IStoreType> {
   return useVuexStore()
 }
 
+/** 在挂载路由之前加载本地数据 */
+export function setupStore() {
+  store.dispatch('login/loadLocalLogin')
+}
+
 export default store

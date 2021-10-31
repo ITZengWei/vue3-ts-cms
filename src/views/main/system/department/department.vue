@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'department',
   setup() {
     return {}
-  }
+  },
 })
 </script>
 

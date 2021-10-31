@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'category',
   setup() {
     return {}
-  }
+  },
 })
 </script>
 

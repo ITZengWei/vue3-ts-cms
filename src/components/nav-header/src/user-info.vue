@@ -30,9 +30,9 @@ export default defineComponent({
       rouer.push('/main')
     }
     return {
-      handleSignout
+      handleSignout,
     }
-  }
+  },
 })
 </script>
 

@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'menu',
   setup() {
     return {}
-  }
+  },
 })
 </script>
 

@@ -9,6 +9,7 @@ import { IRootState } from '../type'
 import LocalCache from '@/utils/cache'
 /** 引入 vue-router 实例 */
 import router from '@/router'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 
 const loginModule: Module<ILoginState, IRootState> = {
   /** 增加了命名空间，就可以通过 login/xxx调用 */
@@ -29,12 +30,12 @@ const loginModule: Module<ILoginState, IRootState> = {
     changeUserMenus(state, payload: any) {
       state.userMenus = payload
 
-      // 动态添加路由
-      // const routes = mapMenusToRoutes(payload)
+      /** 动态添加路由 */
+      const routes = mapMenusToRoutes(payload)
 
-      // routes.forEach((route) => {
-      //   router.addRoute('main', route)
-      // })
+      routes.forEach((route) => {
+        router.addRoute('Main', route)
+      })
 
       // const permissions = mapMenusToPermissions(payload)
 
@@ -74,7 +75,7 @@ const loginModule: Module<ILoginState, IRootState> = {
       const token = LocalCache.getCache('token')
       if (token) {
         commit('changeToken', token)
-        dispatch('getInitialDataAction', null, { root: true })
+        // dispatch('getInitialDataAction', null, { root: true })
       }
       const userinfo = LocalCache.getCache('userinfo')
       if (userinfo) {

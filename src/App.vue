@@ -9,7 +9,7 @@ export default {
   setup() {
     const store = useStore()
     /** 将本地数据设置到 vuex 中 */
-    store.dispatch('login/loadLocalLogin')
+    // store.dispatch('login/loadLocalLogin')
   },
 }
 </script>
