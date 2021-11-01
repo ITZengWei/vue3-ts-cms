@@ -44,7 +44,7 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
   },
   actions: {
-    async accountLoginAction({ commit }, payload: IAccount) {
+    async accountLoginAction({ commit, dispatch }, payload: IAccount) {
       console.log(payload)
       try {
         /** 1. 登录逻辑 */
@@ -54,7 +54,8 @@ const loginModule: Module<ILoginState, IRootState> = {
         commit('changeToken', token)
         LocalCache.setCache('token', token)
 
-        /** 获取用户所属初始化数据  */
+        /** 获取用户所属初始化数据 (部门、角色、菜单)  */
+        dispatch('getInitialDataAction', null, { root: true })
 
         /** 2. 获取用户信息 */
         const { data: userinfo } = await requestUserInfoById(id)
@@ -76,7 +77,8 @@ const loginModule: Module<ILoginState, IRootState> = {
       const token = LocalCache.getCache('token')
       if (token) {
         commit('changeToken', token)
-        // dispatch('getInitialDataAction', null, { root: true })
+        /** 获取用户所属初始化数据 (部门、角色、菜单)  */
+        dispatch('getInitialDataAction', null, { root: true })
       }
       const userinfo = LocalCache.getCache('userinfo')
       if (userinfo) {

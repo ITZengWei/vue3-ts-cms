@@ -70,7 +70,7 @@ export default defineComponent({
     const menu = pathMapToMenu(userMenus.value, route.path)
     console.log(menu)
 
-    const defaultValue = ref(`${menu.id}`)
+    const defaultValue = ref(`${menu?.id}`)
 
     return {
       userMenus,
