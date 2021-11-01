@@ -9,7 +9,7 @@ import { IRootState } from '../type'
 import LocalCache from '@/utils/cache'
 /** 引入 vue-router 实例 */
 import router from '@/router'
-import { mapMenusToRoutes } from '@/utils/map-menus'
+import { mapMenusToRoutes, mapMenusToPermissions } from '@/utils/map-menus'
 
 const loginModule: Module<ILoginState, IRootState> = {
   /** 增加了命名空间，就可以通过 login/xxx调用 */
@@ -37,9 +37,10 @@ const loginModule: Module<ILoginState, IRootState> = {
         router.addRoute('Main', route)
       })
 
-      // const permissions = mapMenusToPermissions(payload)
+      /** 根据菜单数据获取每个模块的权限 */
+      const permissions = mapMenusToPermissions(payload)
 
-      // state.permissions = permissions
+      state.permissions = permissions
     },
   },
   actions: {

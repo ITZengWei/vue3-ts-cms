@@ -1,4 +1,5 @@
 import { ILoginState } from './login/type'
+import { ISystemState } from './main/system/type'
 
 /** 根状态类型 */
 export interface IRootState {
@@ -10,6 +11,7 @@ export interface IRootState {
 /** 子模块类型 */
 export interface IRootWithModule {
   login: ILoginState
+  system: ISystemState
 }
 
 export type IStoreType = IRootState & IRootWithModule

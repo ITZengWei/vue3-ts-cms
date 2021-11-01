@@ -43,3 +43,25 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   _recurseGetRoute(userMenus)
   return routes
 }
+
+/** 按钮权限 */
+export function mapMenusToPermissions(userMenus: any[]) {
+  /** 权限列表 */
+  const permissions: string[] = []
+
+  /** 递归获取权限 */
+  const _recurseGetPermission = (menus: any[]) => {
+    for (const menu of menus) {
+      /** 如果菜单类型为 1 ｜ 2 代表是路由菜单 */
+      if (menu.type === 1 || menu.type === 2) {
+        _recurseGetPermission(menu.children ?? [])
+      } else if (menu.type === 3) {
+        /** 如果菜单类型为3，代表是按钮，拿到按钮里面的权限信息 */
+        permissions.push(menu.permission)
+      }
+    }
+  }
+
+  _recurseGetPermission(userMenus)
+  return permissions
+}

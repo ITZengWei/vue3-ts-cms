@@ -1,7 +1,7 @@
 <template>
   <hyform v-bind="searchFormConfig" v-model="formData">
     <template #header>
-      <h1>高级检索</h1>
+      <!-- <h1>高级检索</h1> -->
     </template>
 
     <template #footer>
