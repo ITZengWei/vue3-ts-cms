@@ -15,7 +15,7 @@ export interface IPropItem {
 /** 二次封装表格传参属性 */
 export interface ITableProps {
   /** 列表数据 */
-  listData: any[]
+  listData?: any[]
   /** 列表总数 */
   listCount?: any
   /** 表格展示的所有列 */

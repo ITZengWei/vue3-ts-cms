@@ -44,6 +44,22 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   return routes
 }
 
+/** 根据路径找到当前的菜单 */
+export function pathMapToMenu(userMenus: any[], currentPath: string): any {
+  for (const menu of userMenus) {
+    if (menu.type === 1) {
+      const findMenu = pathMapToMenu(menu.children ?? [], currentPath)
+      if (findMenu) {
+        return findMenu
+      }
+    } else if (menu.type === 2) {
+      if (menu.url === currentPath) {
+        return menu
+      }
+    }
+  }
+}
+
 /** 按钮权限 */
 export function mapMenusToPermissions(userMenus: any[]) {
   /** 权限列表 */

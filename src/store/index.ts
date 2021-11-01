@@ -18,7 +18,6 @@ const store = createStore<IRootState>({
   },
 })
 
-/** TODO 这有什么用 */
 export function useStore(): Store<IStoreType> {
   return useVuexStore()
 }

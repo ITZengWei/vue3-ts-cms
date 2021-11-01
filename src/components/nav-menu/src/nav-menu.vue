@@ -46,7 +46,7 @@
 import { defineComponent, computed, ref } from 'vue'
 import { useStore } from '@/store'
 import { useRouter, useRoute } from 'vue-router'
-// import { pathMapToMenu } from '@/utils/map-menus'
+import { pathMapToMenu } from '@/utils/map-menus'
 
 export default defineComponent({
   props: {
@@ -58,7 +58,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const router = useRouter()
-    // const route = useRoute()
+    const route = useRoute()
     const userMenus = computed(() => store.state.login.userMenus)
 
     const handleMenuItemClick = (item: any) => {
@@ -67,13 +67,14 @@ export default defineComponent({
       })
     }
 
-    // const menu = pathMapToMenu(userMenus.value, route.path)
+    const menu = pathMapToMenu(userMenus.value, route.path)
+    console.log(menu)
 
-    // const defaultValue = ref(`${menu.id}`)
+    const defaultValue = ref(`${menu.id}`)
 
     return {
       userMenus,
-      // defaultValue,
+      defaultValue,
       handleMenuItemClick,
     }
   },
