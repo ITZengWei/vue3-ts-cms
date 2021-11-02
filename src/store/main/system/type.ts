@@ -8,4 +8,9 @@ export interface ISystemState {
   roleList: any[]
   /** 系统角色总人数 */
   roleCount: number
+
+  /** 系统角色列表 */
+  menuList: any[]
+  /** 系统角色总人数 */
+  menuCount: number
 }

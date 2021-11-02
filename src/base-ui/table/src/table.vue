@@ -22,7 +22,7 @@
         <el-table-column v-bind="propItem" show-overflow-tooltip align="center">
           <template #default="scope">
             <slot :name="propItem.slotName" :row="scope.row">
-              {{ scope.row[propItem.prop] }}
+              {{ propItem.prop && scope.row[propItem.prop] }}
             </slot>
           </template>
         </el-table-column>

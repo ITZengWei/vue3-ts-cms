@@ -19,6 +19,11 @@
         <span>{{ $filters.formatTime(scope.row.updateAt) }}</span>
       </template>
 
+      <template #elIcon="scope">
+        <!-- 如何使用 elment-icon -->
+        <span>{{ scope.row.icon }} </span>
+      </template>
+
       <!-- 操作按钮 -->
       <template #handler="scope">
         <div class="handle-btns">
