@@ -101,18 +101,18 @@ export default class TryRequest {
   }
 
   get<T = any>(config: TryRequestConfig<T>): Promise<T> {
-    return this.request({ ...config, method: 'GET' })
+    return this.request<T>({ ...config, method: 'GET' })
   }
   post<T = any>(config: TryRequestConfig<T>): Promise<T> {
-    return this.request({ ...config, method: 'POST' })
+    return this.request<T>({ ...config, method: 'POST' })
   }
   delete<T = any>(config: TryRequestConfig<T>): Promise<T> {
-    return this.request({ ...config, method: 'DELETE' })
+    return this.request<T>({ ...config, method: 'DELETE' })
   }
   put<T = any>(config: TryRequestConfig<T>): Promise<T> {
-    return this.request({ ...config, method: 'PUT' })
+    return this.request<T>({ ...config, method: 'PUT' })
   }
   patch<T = any>(config: TryRequestConfig<T>): Promise<T> {
-    return this.request({ ...config, method: 'PATCH' })
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

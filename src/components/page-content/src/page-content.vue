@@ -20,8 +20,8 @@
       </template>
 
       <template #elIcon="scope">
-        <!-- 如何使用 elment-icon -->
-        <span>{{ scope.row.icon }} </span>
+        <!-- 使用 elment-icon -->
+        <i v-if="scope.row.icon" :class="scope.row.icon"></i>
       </template>
 
       <!-- 操作按钮 -->
