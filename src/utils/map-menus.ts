@@ -1,7 +1,8 @@
 import { RouteRecordRaw } from 'vue-router'
+import { IBreadcrumb } from '@/base-ui/breadcrumb'
 
 /** 第一个展开的菜单 */
-let firstMenu: any = null
+export let firstMenu: any = null
 
 export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   // console.log(userMenus)
@@ -80,6 +81,37 @@ export function mapMenusToPermissions(userMenus: any[]) {
 
   _recurseGetPermission(userMenus)
   return permissions
+}
+
+/** 根据当前路径，获取面包屑数据 */
+export function pathMapBreadcrumbs(userMenus: any[], currentPath: string) {
+  const breadcrumb: IBreadcrumb[] = []
+
+  const _recurseGetBreadcrumb = (menus: any[]) => {
+    for (const menu of menus) {
+      /** type === 2就是二级目录 */
+      if (menu.type === 2) {
+        /** 当前菜单就是，匹配到的结果 */
+        if (menu.url === currentPath) {
+          return menu
+        }
+      } else if (menu.type === 1) {
+        /** 一级菜单: 遍历其 children，看看其子菜单有没有匹配项 */
+        const findMenu = _recurseGetBreadcrumb(menu.children ?? [])
+        if (findMenu) {
+          /** 加入其父菜单 */
+          breadcrumb.push({ name: menu.name, path: menu.url })
+
+          /** 加入其子菜单 */
+          breadcrumb.push({ name: findMenu.name })
+        }
+      }
+    }
+  }
+
+  _recurseGetBreadcrumb(userMenus)
+
+  return breadcrumb
 }
 
 export function menuMapLeafKeys(menuList: any[]) {

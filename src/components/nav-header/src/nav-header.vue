@@ -6,8 +6,7 @@
       @click="handleFoldClick"
     ></i>
     <div class="content">
-      <div>面包屑</div>
-      <!-- <breadcrumb :breadcrumb="Breadcrumb" /> -->
+      <breadcrumb :breadcrumb="breadcrumbData" />
       <user-info />
     </div>
   </div>
@@ -16,25 +15,28 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import UserInfo from './user-info.vue'
-// import Breadcrumb from '@/base-ui/breadcrumb'
-// import { pathMapBreadcrumbs } from '@/utils/map-menus'
+import Breadcrumb from '@/base-ui/breadcrumb'
+import { pathMapBreadcrumbs } from '@/utils/map-menus'
 import { useRoute } from 'vue-router'
 import { useStore } from '@/store'
 
 export default defineComponent({
   components: {
     UserInfo,
-    // Breadcrumb,
+    Breadcrumb,
   },
   setup(props, { emit }) {
+    /**  需要放到自定义钩子里面使用吗 */
+    const route = useRoute()
     const isFold = ref(false)
 
     const store = useStore()
-    // const Breadcrumb = computed(() => {
-    //   const userMenu = store.state.login.userMenus
-    //   const route = useRoute()
-    //   return pathMapBreadcrumbs(userMenu, route.path)
-    // })
+    const breadcrumbData = computed(() => {
+      const userMenu = store.state.login.userMenus
+      // const route = useRoute()
+
+      return pathMapBreadcrumbs(userMenu, route.path)
+    })
 
     const handleFoldClick = () => {
       isFold.value = !isFold.value
@@ -43,7 +45,7 @@ export default defineComponent({
 
     return {
       isFold,
-      // Breadcrumb,
+      breadcrumbData,
       handleFoldClick,
     }
   },
