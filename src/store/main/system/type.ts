@@ -3,4 +3,9 @@ export interface ISystemState {
   usersList: any[]
   /** 系统用户总人数 */
   usersCount: number
+
+  /** 系统角色列表 */
+  roleList: any[]
+  /** 系统角色总人数 */
+  roleCount: number
 }

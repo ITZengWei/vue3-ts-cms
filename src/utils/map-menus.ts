@@ -81,3 +81,23 @@ export function mapMenusToPermissions(userMenus: any[]) {
   _recurseGetPermission(userMenus)
   return permissions
 }
+
+export function menuMapLeafKeys(menuList: any[]) {
+  /** 叶子节点的 key */
+  const leafKeys: number[] = []
+
+  /** 递归获取菜单id */
+  const _recurseGetLeaf = (menus: any[]) => {
+    for (const menu of menus) {
+      if (menu.children) {
+        _recurseGetLeaf(menu.children)
+      } else {
+        leafKeys.push(menu.id)
+      }
+    }
+  }
+
+  _recurseGetLeaf(menuList)
+
+  return leafKeys
+}

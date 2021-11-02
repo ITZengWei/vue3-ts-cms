@@ -15,7 +15,7 @@ export interface IFormItem {
   placeholder?: any
   /** 下拉框选择属性 */
   options?: any[]
-  // 针对特殊的属性 TODO
+  /** 针对特殊的属性，比如 element-ui 自定义属性 */
   otherOptions?: any
   /** 是否隐藏 （v-if控制） */
   isHidden?: boolean

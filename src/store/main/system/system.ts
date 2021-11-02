@@ -2,13 +2,15 @@ import { Module } from 'vuex'
 import { ISystemState } from './type'
 import { IRootState } from '../../type'
 
-import { getPageListData } from '@/service/main/system/system'
+import { getPageListData, createPageData, editPageData } from '@/service/main/system/system'
 
 const systemModule: Module<ISystemState, IRootState> = {
   namespaced: true,
   state: {
     usersList: [],
     usersCount: 0,
+    roleList: [],
+    roleCount: 0,
   },
   mutations: {
     changeUsersList(state, payload) {
@@ -16,6 +18,12 @@ const systemModule: Module<ISystemState, IRootState> = {
     },
     changeUsersCount(state, payload) {
       state.usersCount = payload
+    },
+    changeRoleList(state, payload) {
+      state.roleList = payload
+    },
+    changeRoleCount(state, payload) {
+      state.roleCount = payload
     },
   },
   getters: {
@@ -50,8 +58,34 @@ const systemModule: Module<ISystemState, IRootState> = {
 
       /** 修改列表总数 */
       commit(`change${transformName}Count`, totalCount)
-
-      console.log(list, totalCount)
+    },
+    /** 页面通用添加逻辑行为封装 */
+    async createPageDataAction({ dispatch }, payload) {
+      const { pageName, newData } = payload
+      /** 执行添加逻辑 */
+      await createPageData(`/${pageName}`, newData)
+      /** 重新获取数据 */
+      dispatch('getPageListAction', {
+        pageName,
+        queryInfo: {
+          offset: 0,
+          size: 10,
+        },
+      })
+    },
+    /** 页面通用编辑逻辑行为封装 */
+    async editPageDataAction({ dispatch }, payload) {
+      const { pageName, newData, id } = payload
+      /** 执行编辑逻辑 */
+      await editPageData(`/${pageName}/${id}`, newData)
+      /** 重新获取数据 */
+      dispatch('getPageListAction', {
+        pageName,
+        queryInfo: {
+          offset: 0,
+          size: 10,
+        },
+      })
     },
   },
 }

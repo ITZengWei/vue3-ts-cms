@@ -5,17 +5,22 @@
       @query-btn-click="handleQueryClick"
       @reset-btn-click="handleResetClick"
     />
+
+    <page-content
+      ref="pageContentRef"
+      :contentTableConfig="contentTableConfig"
+      propsName="users"
+      @editBtnClick="handleEditData"
+      @newBtnClick="handleNewData"
+    />
+
+    <page-modal
+      ref="pageModalRef"
+      :modalConfig="modalConfigRef"
+      :defaultInfo="defaultValue"
+      pageName="users"
+    />
   </div>
-
-  <page-content
-    ref="pageContentRef"
-    :contentTableConfig="contentTableConfig"
-    propsName="users"
-    @editBtnClick="handleEditData"
-    @newBtnClick="handleNewData"
-  />
-
-  <page-modal ref="pageModalRef" :modalConfig="modalConfigRef" pageName="users" />
 </template>
 
 <script lang="ts">
@@ -43,8 +48,28 @@ export default defineComponent({
     /** 分页自定义钩子函数 */
     const { pageContentRef, handleQueryClick, handleResetClick } = usePageSearch()
 
-    /** 弹框表单自定义狗子函数 */
-    const { pageModalRef, handleEditData, handleNewData } = usePageModal()
+    const createCallback = () => {
+      /** 如果是新增的操作，我们把表单类型为 password 隐藏字段 设置为false */
+      modalConfig.formItems.forEach((item) => {
+        if (item.type === 'password') {
+          item.isHidden = false
+        }
+      })
+    }
+    const editCallback = () => {
+      /** 如果是编辑的操作，我们把表单类型为 password 隐藏字段 设置为true */
+      modalConfig.formItems.forEach((item) => {
+        if (item.type === 'password') {
+          item.isHidden = true
+        }
+      })
+    }
+
+    /** 弹框表单自定义钩子函数 */
+    const { pageModalRef, defaultValue, handleEditData, handleNewData } = usePageModal(
+      createCallback,
+      editCallback,
+    )
 
     /** 从全局数据中，取出 role 和 department 数据，放入 select 选择框中 */
     const modalConfigRef = computed(() => {
@@ -67,6 +92,7 @@ export default defineComponent({
       contentTableConfig,
       pageModalRef,
       modalConfigRef,
+      defaultValue,
       handleQueryClick,
       handleResetClick,
       handleEditData,

@@ -40,6 +40,7 @@ export default function usePageModal(newCb?: CallbackFn, editCb?: CallbackFn) {
 
   return {
     pageModalRef,
+    defaultValue,
     handleNewData,
     handleEditData,
   }

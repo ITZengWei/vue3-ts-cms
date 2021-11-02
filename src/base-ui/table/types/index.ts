@@ -7,7 +7,7 @@ export interface IPropItem {
   /** 最小宽度 */
   minWith?: number | string
   /** 插槽名字 */
-  slotName: string
+  slotName?: string
 
   [prop: string]: any
 }

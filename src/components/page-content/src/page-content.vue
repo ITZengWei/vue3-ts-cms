@@ -7,7 +7,7 @@
       v-model:page="pageInfo"
     >
       <template #headerHandler v-if="isCreate">
-        <el-button type="primary" size="medium" @click="handleNewClick">新建用户</el-button>
+        <el-button type="primary" size="medium" @click="handleNewClick">新建</el-button>
       </template>
       <template #status="scope">
         <span>{{ scope.row.enable === 1 ? '开启' : '关闭' }}</span>
@@ -90,7 +90,7 @@ export default defineComponent({
 
     function queryPageData(queryInfo: any = {}) {
       /** 如果没有查找权限直接退出 */
-      // if (!isQuery) return
+      if (!isQuery) return
       const { currentPage, pageSize: size } = pageInfo.value
       const offset = (currentPage - 1) * size
 
