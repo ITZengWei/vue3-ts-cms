@@ -104,6 +104,7 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    /** 对传过来的 v-model 进行浅拷贝，存储 */
     const formData = ref({ ...props.modelValue })
 
     /** 当内部 formData 改变的时候，同步父组件 v-model的值 */
