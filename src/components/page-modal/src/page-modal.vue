@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-dialog :title="title" v-model="centerDialogVisible" width="30%" center destroy-on-close>
+      <!-- v-model="formData" TODO 有一点疑问 -->
       <hy-form v-bind="modalConfig" v-model="formData" />
       <slot />
 

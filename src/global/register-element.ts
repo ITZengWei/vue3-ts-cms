@@ -35,6 +35,7 @@ import {
   ElImage,
   ElDialog,
   ElTree,
+  ElCard,
 } from 'element-plus'
 import 'element-plus/dist/index.css'
 
@@ -74,6 +75,8 @@ export default {
     app.use(ElImage)
     app.use(ElDialog)
     app.use(ElTree)
+    app.use(ElCard)
+
     // app.component(ElButton.name, ElButton)
   },
 }

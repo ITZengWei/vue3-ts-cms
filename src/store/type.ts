@@ -1,5 +1,6 @@
 import { ILoginState } from './login/type'
 import { ISystemState } from './main/system/type'
+import { IDashboardState } from './main/analysis/types'
 
 /** 根状态类型 */
 export interface IRootState {
@@ -15,6 +16,7 @@ export interface IRootState {
 export interface IRootWithModule {
   login: ILoginState
   system: ISystemState
+  dashboard: IDashboardState
 }
 
 export type IStoreType = IRootState & IRootWithModule
