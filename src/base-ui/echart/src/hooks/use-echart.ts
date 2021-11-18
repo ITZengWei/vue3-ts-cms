@@ -5,6 +5,9 @@
  */
 import * as echarts from 'echarts'
 import { EChartsOption } from 'echarts'
+import chinaMapData from '../data/china'
+
+echarts.registerMap('china', chinaMapData)
 
 export default function useEchart(el: HTMLElement) {
   const echartInstance = echarts.init(el)
