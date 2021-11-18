@@ -7,7 +7,7 @@ export const convertData = function (data: any) {
     if (geoCoord) {
       res.push({
         name: data[i].name,
-        value: geoCoord.concat(data[i].value)
+        value: geoCoord.concat(data[i].value),
       })
     }
   }
